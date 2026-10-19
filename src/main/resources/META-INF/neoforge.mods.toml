@@ -1,0 +1,51 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "iceandfire_colony_gear"
+version = "1.0.0"
+displayName = "Ice and Fire Colony Gear"
+authors = "kurok"
+description = '''
+Folds Ice and Fire CE gear into MineColonies' citizen weapon/tool/armor
+ladder using only MineColonies' public registration API (no mixins):
+
+- Ice and Fire tools and blades: copper = level 1; silver/troll/boss-loot
+  swords (hippogryph, stymphalian, amphithere, hippocampus) = 2; dragonbone
+  (+blooded elemental swords)/ghost/dread/dread-knight = 3; dread-queen and
+  dragonsteel (fire/ice/lightning) = 4.
+- Ice and Fire armor needs no registration: MineColonies derives its level
+  from the armor points, which grades the sets sensibly (copper/silver around
+  iron, deathworm/troll mid, dragon scale above, dragonsteel pinning the top).
+- Namespace-pure: only iceandfire items are registered; the compact vanilla
+  ladder stays owned by tensura-colony-gear.
+'''
+
+[[dependencies.iceandfire_colony_gear]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iceandfire_colony_gear]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,1.21.2)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.iceandfire_colony_gear]]
+modId = "minecolonies"
+type = "required"
+versionRange = "[1.1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.iceandfire_colony_gear]]
+modId = "iceandfire"
+type = "required"
+versionRange = "[2.0-beta.1,)"
+ordering = "AFTER"
+side = "BOTH"
