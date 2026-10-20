@@ -1,4 +1,4 @@
-﻿# Agent rules and conventions â€” Ice and Fire Colony Gear
+# Agent rules and conventions â€” Ice and Fire Colony Gear
 
 **Repo:** `HexaHexes/iceandfire-colony-gear` Â· **Mod ID:** `iceandfire_colony_gear` Â· **Branch:** `master`
 **Platform:** Minecraft 1.21.1 / NeoForge 21.1.259 / JDK 21 Â· **Jar:** `build/libs/iceandfire-colony-gear-<version>.jar`
