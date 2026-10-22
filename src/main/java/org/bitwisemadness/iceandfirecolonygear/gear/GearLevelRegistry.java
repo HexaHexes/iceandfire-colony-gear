@@ -1,4 +1,4 @@
-package dev.kurok.mods.iceandfirecolonygear.gear;
+package org.bitwisemadness.iceandfirecolonygear.gear;
 
 import com.minecolonies.api.compatibility.Compatibility;
 import java.util.Map;

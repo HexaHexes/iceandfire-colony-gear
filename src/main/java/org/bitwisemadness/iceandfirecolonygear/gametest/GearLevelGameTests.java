@@ -1,7 +1,7 @@
-package dev.kurok.mods.iceandfirecolonygear.gametest;
+package org.bitwisemadness.iceandfirecolonygear.gametest;
 
 import com.minecolonies.api.compatibility.Compatibility;
-import dev.kurok.mods.iceandfirecolonygear.gear.GearLevelRegistry;
+import org.bitwisemadness.iceandfirecolonygear.gear.GearLevelRegistry;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import net.minecraft.core.registries.BuiltInRegistries;

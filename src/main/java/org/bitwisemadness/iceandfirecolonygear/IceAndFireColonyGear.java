@@ -1,6 +1,6 @@
-package dev.kurok.mods.iceandfirecolonygear;
+package org.bitwisemadness.iceandfirecolonygear;
 
-import dev.kurok.mods.iceandfirecolonygear.gear.GearLevelRegistry;
+import org.bitwisemadness.iceandfirecolonygear.gear.GearLevelRegistry;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
