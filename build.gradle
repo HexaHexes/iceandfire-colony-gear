@@ -36,12 +36,37 @@ neoForge {
     }
 }
 
+configurations {
+    // Runtime closure for the gametest run: staged into run/mods below.
+    gametestMods
+}
+
+repositories {
+    maven {
+        name = 'CurseMaven'
+        url = 'https://cursemaven.com'
+    }
+    mavenCentral()
+}
+
 dependencies {
     // Compile-only against MineColonies' public API (registerItemTier /
     // getItemLevel). Ice and Fire is never referenced at compile time - the
     // ladder keys off IafToolMaterials enum constant names and registry-path
-    // fragments at runtime. See libs/ and testmods/ (gitignored).
-    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    // fragments at runtime. Coordinates are CurseMaven so a clean checkout
+    // resolves every jar - never gitignored libs/ or testmods/.
+    compileOnly 'curse.maven:minecolonies-245506:9058295' // minecolonies-1.1.1403-1.21.1
+
+    gametestMods 'curse.maven:architectury-419699:8492726'
+    gametestMods 'curse.maven:blockui-522992:7541336'
+    gametestMods 'curse.maven:cloth-config-348521:5729127'
+    gametestMods 'curse.maven:domum-ornamentum-527361:8784713'
+    gametestMods 'curse.maven:iceandfire-ce-1040076:7722420' // IceAndFireCE-2.0-beta.15 (pinned)
+    gametestMods 'curse.maven:jupiter-1072905:7738312' // jupiter-2.3.7 (IaF hard requirement)
+    gametestMods 'curse.maven:minecolonies-245506:9058295'
+    gametestMods 'curse.maven:structurize-298744:8610535'
+    gametestMods 'curse.maven:terrablender-940057:6054947'
+    gametestMods 'curse.maven:uranus-1010827:8587525' // uranus-2.4.1 (IaF hard requirement)
 }
 
 // --- gametest harness -------------------------------------------------------
@@ -49,7 +74,7 @@ dependencies {
 // Stage the pack's dependency mod jars into the run's production-style mods/
 // folder, where FML's mods-folder locator finds them exactly like in the pack.
 tasks.register('prepareGametestMods', Sync) {
-    from 'testmods'
+    from configurations.gametestMods
     into 'run/mods'
 }
 
@@ -86,4 +111,16 @@ tasks.matching { it.name == 'runGametest' }.configureEach {
         }
         logger.lifecycle("GameTest OK: all ${expectedTests} tests passed")
     }
+}
+
+// --- JUnit wiring (junit CI check) -------------------------------------------
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
 }
